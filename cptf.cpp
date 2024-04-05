@@ -94,6 +94,14 @@ string inside(string month, int day, string msg, bool insert){
 	return "inserted";
 }
 
+void nextweek(string month, int day){
+    for(int i = 0; 7 > i; i++){
+        if(!(inside(month, day+i, "", false) == "")){
+            printf(inside(month, day,//
+        }
+    }
+}
+
 int main(){
 	string month;
 	int day;
@@ -171,6 +179,7 @@ int main(){
             printf("Which date would you like to check from?");
             cin >> month >> day;
 			printf("Here are your schedueled items for that week");
+            nextweek(month, day);
 		}
 		if(choice == 4){
 			return 0;
