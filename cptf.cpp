@@ -168,7 +168,9 @@ int main(){
 			}
 		}
 		if(choice == 3){
-			//:D
+            printf("Which date would you like to check from?");
+            cin >> month >> day;
+			printf("Here are your schedueled items for that week");
 		}
 		if(choice == 4){
 			return 0;
