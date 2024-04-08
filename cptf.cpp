@@ -15,74 +15,95 @@ string October[31];
 string November[30];
 string December[31];
 
-string inside(string month, int day, string msg, bool insert){
-	if(month == "January" && day <= 30){
+void fill_functions(){
+	for(int i = 0; i < 31; i++){
+		January[i] = "--";
+		March[i] = "--";
+		May[i] = "--";
+		July[i] = "--";
+		August[i] = "--";
+		October[i] = "--";
+		December[i] = "--";
+	}
+	for(int i = 0; i < 30; i++){
+		April[i] = "--";
+		June[i] = "--";
+		September[i] = "--";
+		November[i] = "--";
+	}
+	for(int i = 0; i < 28; i++){
+		February[i] = "--";
+	}
+}
+
+string inside(int month, int day, string msg, bool insert){
+	if(month == 1 && day <= 30){
 		if(insert){
 			January[day] = msg;
 		}
 		return January[day];
 	}
-	if(month == "February" && day <= 27){
+	if(month == 2 && day <= 27){
 		if(insert){
 			February[day] = msg;
 		}
 		return February[day];
 	}
-	if(month == "March" && day <= 30){
+	if(month == 3 && day <= 30){
 		if(insert){
 			March[day] = msg;
 		}
 		return March[day];
 	}
-	if(month == "April" && day <= 29){
+	if(month == 4 && day <= 29){
 		if(insert){
 			April[day] = msg;
 		}
 		return April[day];
 	}
-	if(month == "May" && day <= 30){
+	if(month == 5 && day <= 30){
 		if(insert){
 			May[day] = msg;
 		}
 		return May[day];
 	}
-	if(month == "June" && day <= 29){
+	if(month == 6 && day <= 29){
 		if(insert){
 			June[day] = msg;
 		}
 		return June[day];
 	}
-	if(month == "July" && day <= 30){
+	if(month == 7 && day <= 30){
 		if(insert){
 			July[day] = msg;
 		}
 		return July[day];
 	}
-	if(month == "August" && day <= 30){
+	if(month == 8 && day <= 30){
 		if(insert){
 			August[day] = msg;
 		}
 		return August[day];
 	}
-	if(month == "September" && day <= 29){
+	if(month == 9 && day <= 29){
 		if(insert){
 			September[day] = msg;
 		}
 		return September[day];
 	}
-	if(month == "October" && day <= 30){
+	if(month == 10 && day <= 30){
 		if(insert){
 			October[day] = msg;
 		}
 		return October[day];
 	}
-	if(month == "November" && day <= 29){
+	if(month == 11 && day <= 29){
 		if(insert){
 			November[day] = msg;
 		}
 		return November[day];
 	}
-	if(month == "December" && day <= 30){
+	if(month == 12 && day <= 30){
 		if(insert){
 			December[day] = msg;
 		}
@@ -94,7 +115,7 @@ string inside(string month, int day, string msg, bool insert){
 	return "inserted";
 }
 
-void nextweek(string month, int day){
+/*void nextweek(string month, int day){
     for(int i = 0; 7 > i; i++){
         if(day > 31){
             if(month == "January"){
@@ -104,22 +125,24 @@ void nextweek(string month, int day){
             printf("%s, %d", month.c_str(), day);
         }
     }
-}
+}*/
 
 int main(){
-	string month;
+	fill_functions();
+	int month;
+	char slash;
 	int day;
 	string input;
 	int choice;
 	while(true){
-		printf("\n1) Look at you schedule\n"
+		printf("\n1) Look at your schedule\n"
 			   "2) Put something in your schedule\n"
 			   "3) Check if anything is scheduled in the following week\n"
 			   "4) I'm done\n");
 		cin >> choice;
 		if(choice == 1){
-			printf("What day would you like to look at? ");
-			cin >> month >> day;
+			printf("\nWhat day would you like to look at? ");
+			cin >> month >> slash >> day;
 			day -= 1;
 
 			if(inside(month, day, "", false) == "bro"){
@@ -127,7 +150,7 @@ int main(){
 				sleep(1);
 			}
 
-			else if(inside(month, day, "", false) == ""){
+			else if(inside(month, day, "", false) == "--"){
 				printf("There is nothing scheduled here, would you like to add something? (yes/no) ");
 				cin >> input;
 				if(input == "yes"){
@@ -145,14 +168,14 @@ int main(){
 		}
 		if(choice == 2){
 			printf("\nWhat day would you like to schedule? ");
-			cin >> month >> day;
+			cin >> month >> slash >> day;
 			day -= 1;
 
 			if(inside(month, day, "", false) == "bro"){
 				printf("That is not a valid day.\n");
 			}
 
-			if(inside(month, day, "", false) == ""){
+			else if(inside(month, day, "", false) == "--"){
 				printf("Put your message here: ");
 				cin.ignore();
 				getline(cin, input);
@@ -181,9 +204,9 @@ int main(){
 		}
 		if(choice == 3){
             printf("Which date would you like to check from?");
-            cin >> month >> day;
+            cin >> month >> slash >> day;
 			printf("Here are your schedueled items for that week");
-            nextweek(month, day);
+//            nextweek(month, day);
 		}
 		if(choice == 4){
 			return 0;
