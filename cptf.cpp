@@ -117,9 +117,9 @@ string inside(int month, int day, string msg, bool insert){
 
 /*void nextweek(string month, int day){
     for(int i = 0; 7 > i; i++){
-        if(day > 31){
-            if(month == "January"){
-            }
+        if(month[day] == ""){
+            month = month + 1;
+            day = 1;
         }
         if(!(inside(month, day+i, "", false) == "")){
             printf("%s, %d", month.c_str(), day);
