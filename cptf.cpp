@@ -115,17 +115,17 @@ string inside(int month, int day, string msg, bool insert){
 	return "inserted";
 }
 
-/*void nextweek(string month, int day){
+void nextweek(string month, int day){
     for(int i = 0; 7 > i; i++){
-        if(month[day] == ""){
+        if(inside(month, day+i, "", false) == NULL){
             month = month + 1;
             day = 1;
         }
-        if(!(inside(month, day+i, "", false) == "")){
+        if(!(inside(month, day+i, "", false) == NULL)){
             printf("%s, %d", month.c_str(), day);
         }
     }
-}*/
+}
 
 int main(){
 	fill_functions();
