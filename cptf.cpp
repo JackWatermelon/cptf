@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <unistd.h>
 using namespace std;
 
@@ -112,19 +113,21 @@ string inside(int month, int day, string msg, bool insert){
 	else{
 		return "bro";
 	}
-	return "inserted";
 }
 
-void nextweek(string month, int day){
-    for(int i = 0; 7 > i; i++){
-        if(inside(month, day+i, "", false) == NULL){
-            month = month + 1;
-            day = 1;
+void nextweek(int month, int day){
+    for(int i = 0; i < 7; i++){
+		if(inside(month, day - 1, "", false) == "bro"){
+           month += 1;
+           day = 1;
         }
-        if(!(inside(month, day+i, "", false) == NULL)){
-            printf("%s, %d", month.c_str(), day);
-        }
+		printf("\n%d/%d: ", month, day);
+		if(!(inside(month, day - 1, "", false) == "--")){
+			cout << '"' << inside(month, day - 1, "", false) << '"';
+		}
+		day += 1;
     }
+	cout << endl;
 }
 
 int main(){
@@ -203,10 +206,10 @@ int main(){
 			}
 		}
 		if(choice == 3){
-            printf("Which date would you like to check from?");
+            printf("Which date would you like to check from? ");
             cin >> month >> slash >> day;
-			printf("Here are your schedueled items for that week");
-//            nextweek(month, day);
+			printf("Here are your schedueled items for that week:\n");
+            nextweek(month, day);
 		}
 		if(choice == 4){
 			return 0;
