@@ -137,6 +137,9 @@ int main(){
 	int day;
 	string input;
 	int choice;
+    printf("Welcome to the schedule maker!\n");
+    printf("Please enter your dates in a "
+            "month/day format only using numbers\n");
 	while(true){
 		printf("\n1) Look at your schedule\n"
 			   "2) Put something in your schedule\n"
@@ -154,7 +157,8 @@ int main(){
 			}
 
 			else if(inside(month, day, "", false) == "--"){
-				printf("There is nothing scheduled here, would you like to add something? (yes/no) ");
+				printf("There is nothing scheduled here, "
+                       "would you like to add something? (yes/no) ");
 				cin >> input;
 				if(input == "yes"){
 					printf("Put your message here: ");
@@ -165,7 +169,8 @@ int main(){
 			}
 
 			else{
-				cout << endl << '"' << inside(month, day, "", false) << '"' << endl;
+				cout << endl << '"' << inside(month, day, "", false) << '"';
+                cout << endl;
 				sleep(2);
 			}
 		}
@@ -190,6 +195,7 @@ int main(){
 					   "1) Replace\n"
 					   "2) View\n");
 				cin >> choice2;
+                cout << endl;
 				if(choice2 == 1){
 					printf("Put your message here: ");
 					cin.ignore();
@@ -197,7 +203,8 @@ int main(){
 					inside(month, day, input, true);
 				}
 				else if(choice == 2){
-					cout << endl << '"' << inside(month, day, "", false) << '"' << endl;
+					cout << '"' << inside(month, day, "", false) << '"';
+                    cout << endl;
 					sleep(2);
 				}
 				else{
@@ -208,8 +215,13 @@ int main(){
 		if(choice == 3){
             printf("Which date would you like to check from? ");
             cin >> month >> slash >> day;
-			printf("Here are your schedueled items for that week:\n");
-            nextweek(month, day);
+            if(inside(month, day - 1, "", false) == "bro"){
+                printf("This is not a valid day.\n");
+            }
+			else{
+                printf("Here are your schedueled items for that week:\n");
+                nextweek(month, day);
+            }
 		}
 		if(choice == 4){
 			return 0;
