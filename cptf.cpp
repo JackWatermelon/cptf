@@ -111,13 +111,13 @@ string inside(int month, int day, string msg, bool insert){
 		return December[day];
 	}
 	else{
-		return "bro";
+		return "na";
 	}
 }
 
 void nextweek(int month, int day){
     for(int i = 0; i < 7; i++){
-		if(inside(month, day - 1, "", false) == "bro"){
+		if(inside(month, day - 1, "", false) == "na"){
            month += 1;
            day = 1;
         }
@@ -151,7 +151,7 @@ int main(){
 			cin >> month >> slash >> day;
 			day -= 1;
 
-			if(inside(month, day, "", false) == "bro"){
+			if(inside(month, day, "", false) == "na"){
 				printf("\nThat is not a valid day.\n");
 				sleep(1);
 			}
@@ -179,8 +179,9 @@ int main(){
 			cin >> month >> slash >> day;
 			day -= 1;
 
-			if(inside(month, day, "", false) == "bro"){
+			if(inside(month, day, "", false) == "na"){
 				printf("That is not a valid day.\n");
+				sleep(1);
 			}
 
 			else if(inside(month, day, "", false) == "--"){
@@ -190,7 +191,7 @@ int main(){
 				inside(month, day, input, true);
 			}
 			else{
-				int choice2;
+				int choice2 = 5;
 				printf("There is already something scheduled here\n"
 					   "1) Replace\n"
 					   "2) View\n");
@@ -202,20 +203,17 @@ int main(){
 					getline(cin, input);
 					inside(month, day, input, true);
 				}
-				else if(choice == 2){
+				else{
 					cout << '"' << inside(month, day, "", false) << '"';
                     cout << endl;
 					sleep(2);
-				}
-				else{
-					cout << "???" << endl;
 				}
 			}
 		}
 		if(choice == 3){
             printf("Which date would you like to check from? ");
             cin >> month >> slash >> day;
-            if(inside(month, day - 1, "", false) == "bro"){
+            if(inside(month, day - 1, "", false) == "na"){
                 printf("This is not a valid day.\n");
             }
 			else{
