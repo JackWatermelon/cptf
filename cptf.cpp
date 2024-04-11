@@ -118,12 +118,15 @@ string inside(int month, int day, string msg, bool insert){
 void nextweek(int month, int day){
     for(int i = 0; i < 7; i++){
 		if(inside(month, day - 1, "", false) == "na"){
-           month += 1;
-           day = 1;
+        	month += 1;
+        	day = 1;
+			if(month > 12){
+				month = 1;
+			}
         }
-		printf("\n%d/%d: ", month, day);
+		printf("\n%d/%d ", month, day);
 		if(!(inside(month, day - 1, "", false) == "--")){
-			cout << '"' << inside(month, day - 1, "", false) << '"';
+			printf("\"%s\"", inside(month, day - 1, "", false).c_str());
 		}
 		day += 1;
     }
@@ -169,7 +172,7 @@ int main(){
 			}
 
 			else{
-				cout << endl << '"' << inside(month, day, "", false) << '"';
+				printf("\"%s\"", inside(month, day, "", false).c_str());
                 cout << endl;
 				sleep(2);
 			}
@@ -204,7 +207,7 @@ int main(){
 					inside(month, day, input, true);
 				}
 				else{
-					cout << '"' << inside(month, day, "", false) << '"';
+					printf("\"%s\"", inside(month, day, "", false).c_str());
                     cout << endl;
 					sleep(2);
 				}
