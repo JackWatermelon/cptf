@@ -141,7 +141,7 @@ int main(){
 	int choice;
     printf("Welcome to the schedule maker!\n");
     printf("Please enter your dates in a "
-            "month/day format only using numbers\n");
+            "month/day format only using numbers. Ex: 12/25\n");
 	while(true){
 		printf("\n1) Look at your schedule\n"
 			   "2) Put something in your schedule\n"
