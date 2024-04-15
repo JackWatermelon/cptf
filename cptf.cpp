@@ -114,7 +114,8 @@ string inside(int month, int day, string msg, bool insert){
 	}
 }
 
-void nextweek(int month, int day){
+int nextweek(int month, int day){
+	int time = 0;
     for(int i = 0; i < 7; i++){
 		if(inside(month, day - 1, "", false) == "na"){
         	month += 1;
@@ -126,10 +127,12 @@ void nextweek(int month, int day){
 		printf("\n%d/%d ", month, day);
 		if(!(inside(month, day - 1, "", false) == "--")){
 			printf("\"%s\"", inside(month, day - 1, "", false).c_str());
+			time += 1;
 		}
 		day += 1;
     }
 	cout << endl;
+	return time;
 }
 
 int main(){
@@ -220,7 +223,7 @@ int main(){
             }
 			else{
                 printf("Here are your schedueled items for that week:\n");
-                nextweek(month, day);
+                sleep(nextweek(month, day));
             }
 		}
 		if(choice == 4){
