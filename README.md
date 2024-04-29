@@ -3,5 +3,5 @@ we hav lot of fun
 it a schedule thingy
 
 main error:
-1. Inputting the incorrect things (such as inputting a string into a input that takes a integer) will break the code
-(so be careful with that).
+1. input anything else then what it tells you breaks code
+2. can check from 2/0 
